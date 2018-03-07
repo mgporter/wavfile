@@ -9,12 +9,12 @@ Wavfile is a lightweight wrapper for wav files.
 * Has a plot() method to plot wav data using pyplot
 * Can write from NumPy array to a new wav file
 
-## What I want to add later
+## Things to add:
 * Ways to transform the wav file
 * Frequency analysis
 * Simple volume controls such as normalization, compression, and expansion
 * Combine multiple wav files
 * Support for 24 bit files
 
-## Things to improve
+## Things to improve:
 * Efficiency of data import
