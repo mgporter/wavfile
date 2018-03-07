@@ -10,8 +10,8 @@ Wavfile is a lightweight wrapper for wav files.
 * Can write from NumPy array to a new wav file
 
 ## Usage
-> this is a 
-> test
+`this is a` 
+`test`
 
 ## Things to add:
 * Ways to transform the wav file
