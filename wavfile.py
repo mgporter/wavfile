@@ -2,6 +2,9 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
+class ImportError(Exception):
+    pass
+
 class Wav:
     
     def __init__(self, file):
@@ -12,7 +15,7 @@ class Wav:
             self.Format = b.read(4).decode('utf-8')
             
             if self.Format != 'WAVE':
-                raise OSError("Not a WAVE file")
+                raise ImportError("Not a WAVE file")
                 
             self.Subchunk1ID = b.read(4).decode('utf-8')
             self.Subchunk1Size = int.from_bytes(b.read(4), byteorder='little', signed=True)
@@ -37,9 +40,18 @@ class Wav:
         self._SamplePointNumBits = int((self.BitsPerSample + 7) / 8)
         self._SampleFrameNumBits = self._SamplePointNumBits * self.NumChannels
         self._NumSampleFrames = int(len(temp_data) / self._SampleFrameNumBits)
+
+        if self.BitsPerSample == 2:
+            np_dtype = "int16"
+        elif: self.BitsPerSample == 3:
+            raise ImportError("24 bit wav files are currently not supported")
+        elif: self.BitsPerSample == 4:
+            np_dtype = "f4"
+        else:
+            raise ImportError("Could not detect bitrate or bitrate unsupported")
         
         arr = np.array([int.from_bytes(temp_data[i:i+self._SamplePointNumBits], byteorder='little', signed=True) 
-                        for i in range(0, len(temp_data), self._SamplePointNumBits)], dtype="int16")
+                        for i in range(0, len(temp_data), self._SamplePointNumBits)], dtype=np_dtype)
         self.data = arr.reshape((-1, self.NumChannels))
         
     def __repr__(self):
