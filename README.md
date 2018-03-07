@@ -11,12 +11,12 @@ Wavfile is a lightweight wrapper for wav files.
 
 ## Usage
 ### Invoke:
-`wavobject = Wav("path/to/wavfile.wav")`
+    wavobject = Wav("path/to/wavfile.wav")
 ### Plot:
-`wavobject.plot()`\n
+    wavobject.plot()
 note: optional kwargs `xmin` and `xmax` define the part of the wav file you would like to look at, in samples
 ### Write:
-`wavobject.write("path/to/new_wavfile.wav")`
+    wavobject.write("path/to/new_wavfile.wav")
 
 ## Things to add:
 * Ways to transform the wav file
