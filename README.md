@@ -17,6 +17,8 @@ Wavfile is a lightweight wrapper for wav files.
 note: optional kwargs `xmin` and `xmax` define the part of the wav file you would like to look at, in samples
 ### Write:
     wavobject.write("path/to/new_wavfile.wav")
+### View raw wav data:
+    wavobject.data
 
 ## Things to add:
 * Ways to transform the wav file
